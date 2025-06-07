@@ -56,10 +56,11 @@ const hideOptionsLazy = () => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .wrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 input {
@@ -73,6 +74,10 @@ input {
   box-shadow: 2px 1px 10px #a3a3a3;
   border-radius: 5px;
   overflow: hidden;
+  width: 100%;
+  background-color: #2c2c2c;
+  position: absolute;
+  top: 70px;
 }
 
 .options ul {
