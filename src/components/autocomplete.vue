@@ -7,8 +7,7 @@ const props = defineProps({
   },
 })
 
-const { name, type, prompt, value, placeholder, status, required, criteria, options } =
-  props.inputProp
+const { name, prompt, value, options } = props.inputProp
 
 const localValue = ref(value)
 const localOptions = computed(() => {
@@ -27,7 +26,11 @@ const showOptions = shallowRef(false)
 const hideOptionsLazy = () => {
   setTimeout(() => {
     showOptions.value = !showOptions.value
-  }, 100)
+  }, 200)
+}
+
+const updateValue = (value) => {
+  localValue.value = value
 }
 </script>
 
@@ -37,7 +40,6 @@ const hideOptionsLazy = () => {
       {{ prompt }}
       <input
         :id="name"
-        ref="input"
         v-model="localValue"
         type="text"
         @focus="showOptions = !showOptions"
@@ -46,7 +48,7 @@ const hideOptionsLazy = () => {
       <transition>
         <div v-if="showOptions" class="options">
           <ul>
-            <li v-for="item in localOptions" @click.prevent="localValue = item.value">
+            <li v-for="item in localOptions" @click="updateValue(item.value)">
               {{ item.label }}
             </li>
           </ul>

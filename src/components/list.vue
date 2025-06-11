@@ -44,8 +44,8 @@ fetchFromServer()
 
 <template>
   <div class="list-wrapper">
-    <div class="list-item" v-for="input in inputList" :key="input.name">
-      <div class="autocomplete" v-if="input.type === 'choice-autocomplete'">
+    <div v-for="input in inputList" :key="input.name" class="list-item">
+      <div v-if="input.type === 'choice-autocomplete'" class="autocomplete">
         <Autocomplete :id="input.name" :inputProp="input" />
       </div>
       <div v-else>Unsupported</div>
@@ -56,5 +56,7 @@ fetchFromServer()
 <style scoped>
 .list-item:nth-child(n) {
   margin-bottom: 5px;
+  padding: 10px;
+  border-bottom: 1px solid #a2a2a2;
 }
 </style>
